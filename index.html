@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do & Notes App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>To-Do & Notes App</h1>
+    <nav>
+      <a href="steve.html" class="neon-button">Ask Steve</a>
+    </nav>
+  </header>
+  
+  <main class="container">
+    <div class="task-container">
+      <h2>Your To-Do List</h2>
+      <ul id="task-list"></ul>
+      <input type="text" id="task-title" placeholder="Enter task title">
+      <textarea id="task-desc" placeholder="Enter task description"></textarea>
+      <button class="neon-button" onclick="addTask()">Add Task</button>
+    </div>
+    
+    <div class="notes-container">
+      <h2>Your Notes</h2>
+      <ul id="notes-list"></ul>
+      <input type="text" id="note-title" placeholder="Enter note title">
+      <textarea id="note-desc" placeholder="Enter note description"></textarea>
+      <button class="neon-button" onclick="addNote()">Add Note</button>
+    </div>
+  </main>
+  
+  <script src="script.js"></script>
+</body>
+</html>

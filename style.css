@@ -1,0 +1,158 @@
+/* Body and General Styles */
+body {
+    background: #121212;
+    color: #e0e0ff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #00ffcc;
+    text-shadow: 0 0 15px #00ffcc;
+  }
+  
+  /* Header and Navigation */
+  header {
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.7);
+  }
+  
+  nav a {
+    color: #00ffcc;
+    text-decoration: none;
+    padding: 10px 20px;
+    background: #222222;
+    border-radius: 5px;
+    text-shadow: 0 0 5px #00ffcc;
+  }
+  
+  /* Tabs */
+  .tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .tab-button {
+    flex: 1;
+    padding: 10px;
+    background: none;
+    border: none;
+    color: #e0e0ff;
+    font-size: 1.2em;
+    text-shadow: 0 0 5px #00ffcc;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .tab-button.active {
+    font-weight: bold;
+    text-shadow: 0 0 15px #00ffcc;
+  }
+  
+  .tab-content {
+    display: none;
+  }
+  
+  .tab-content.active {
+    display: block;
+  }
+  
+  /* Task and Note Forms */
+  .task-form, .note-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+  }
+  
+  input, textarea {
+    width: 80%;
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 1.1em;
+    border-radius: 8px;
+    border: 2px solid #00ffcc;
+    background: rgba(0, 0, 0, 0.7);
+    color: #e0e0ff;
+  }
+  
+  textarea {
+    height: 100px;
+  }
+  
+  .neon-button {
+    background: #00ffcc;
+    color: #121212;
+    padding: 12px 25px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-shadow: 0 0 15px #00ffcc;
+    transition: 0.3s;
+  }
+  
+  .neon-button:hover {
+    background: #00bfae;
+    text-shadow: 0 0 25px #00ffcc;
+  }
+  
+  /* Task and Note List */
+  #task-list, #note-list {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .task, .note {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  .delete-btn {
+    background-color: #ff4d4d; /* Bright red color */
+    color: white;             /* White text */
+    border: none;             /* Remove default border */
+    padding: 5px 10px;        /* Padding for better look */
+    border-radius: 5px;       /* Rounded corners */
+    cursor: pointer;          /* Pointer cursor on hover */
+    font-size: 14px;          /* Adjust font size */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+  }
+  
+  .delete-btn:hover {
+    background-color: #cc0000; /* Darker red on hover */
+  }
+  /* Style for Task Titles */
+.task-item strong {
+  color: #4CAF50; /* Green color for task title */
+}
+
+/* Style for Task Description */
+.task-item p {
+  color: #555555; /* Gray color for task description */
+}
+
+/* Style for Note Titles */
+.note-item strong {
+  color: #2196F3; /* Blue color for note title */
+}
+
+/* Style for Note Description */
+.note-item p {
+  color: #555555; /* Gray color for note description */
+}
+
+/* Style for messages from Steve */
+.steve {
+  color: #24faef; /* Orange color for Steve's response */
+}
+
+/* Style for messages from the user */
+.user {
+  color: #00BCD4; /* Cyan color for user input */
+}
