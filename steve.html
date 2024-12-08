@@ -14,7 +14,8 @@
       <a href="index.html" class="neon-button">Back to To-Do & Notes</a>
     </nav>
   </header>
- 
+  <div class="prompts">
+    
   
   <main class="container">
     <div class="chat-container">
@@ -27,8 +28,20 @@
         
       </div>
     </div>
+     <!-- Question Button -->
+     <button class="neon-button" onclick="toggleQuestions()">Questions</button>
+    
+     <!-- Slide Panel with Questions -->
+     <div id="questions-slide" class="slide-panel">
+       <button class="close-btn" onclick="toggleQuestions()">Close</button>
+       <ul id="questions-list">
+         <!-- Questions will be dynamically added here -->
+       </ul>
+     </div>
   </main>
   
   <script src="script.js"></script>
+  <script src="sqs.js"></script>
+  <script src="scs.js"></script>
 </body>
 </html>

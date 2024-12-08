@@ -136,17 +136,31 @@ function askSteve() {
     userInput.value = ''; // Clear input field
 
     let response = "Sorry, I didn’t understand that. Can you ask something else?";
-
-    // Example responses logic
-    if (/hello|hi|hey/i.test(question)) {
-      response = "Hello! How can I assist you today?";
-    } else if (/how are you/i.test(question)) {
-      response = "I'm just a robot, but I'm here to help you with tasks and notes!";
-    } else if (/joke|funny/i.test(question)) {
-      response = "Why don’t robots ever get tired? Because we’re powered by humor and algorithms! 🤖";
-    } else if (/your name/i.test(question)) {
-      response = "I'm Steve, your personal assistant. What's yours?";
+// Match user query to tasks
+    const matchingTask = tasks.find(task => question.includes(task.title.toLowerCase()));
+    if (matchingTask) {
+      response = `Here's the task you asked about:\nTitle: ${matchingTask.title}\nDescription: ${matchingTask.desc}`;
     }
+
+    // Match user query to notes
+    const matchingNote = notes.find(note => question.includes(note.title.toLowerCase()));
+    if (matchingNote) {
+      response = `Here's the note you asked about:\nTitle: ${matchingNote.title}\nDescription: ${matchingNote.desc}`;
+    }
+
+    // General queries
+    if (!matchingTask && !matchingNote) {
+      if (/tasks/i.test(question)) {
+        response = tasks.length > 0 
+          ? 'Here are your tasks:\n' + tasks.map(task => `${task.title}: ${task.desc}`).join('\n')
+          : 'You have no tasks yet.';
+      } else if (/notes/i.test(question)) {
+        response = notes.length > 0 
+          ? 'Here are your notes:\n' + notes.map(note => `${note.title}: ${note.desc}`).join('\n')
+          : 'You have no notes yet.';
+      }
+    }
+    
 // Responses for tasks and notes
 if (/tasks|to-do list/i.test(question)) {
   if (tasks.length > 0) {
@@ -207,4 +221,65 @@ function speak(text) {
   // Speak the text
   synth.speak(utterance);
 }
+// script.js
 
+// Function to handle asking Steve and processing the response
+function askSteve() {
+  const question = document.getElementById("user-input").value; // Get user input from the text box
+  const response = getResponse(question); // Call getResponse() from scs.js to process the question
+  speakResponse(response); // Use speech synthesis to speak the response
+  displayResponse(response); // Display the response on the webpage
+}
+
+// Display the response in the chat box
+function displayResponse(response) {
+  const chatBox = document.getElementById("chat-box");
+  const message = document.createElement("div");
+  message.classList.add("chat-message");
+  message.textContent = response;
+  chatBox.appendChild(message);
+  chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the bottom of the chat box
+}
+
+// Use Web Speech API to speak the response
+function speakResponse(response) {
+  const speech = new SpeechSynthesisUtterance(response);
+  speech.lang = "en-US"; // Set language to English
+  window.speechSynthesis.speak(speech); // Speak the response
+}
+
+    // Handle specific queries for tasks and notes
+    if (!matchingTask && !matchingNote) {
+      if (/tasks/i.test(question)) {
+        response = tasks.length > 0 
+          ? 'Here are your tasks:\n' + tasks.map(task => `${task.title}: ${task.desc}`).join('\n')
+          : 'You have no tasks yet.';
+      } else if (/notes/i.test(question)) {
+        response = notes.length > 0 
+          ? 'Here are your notes:\n' + notes.map(note => `${note.title}: ${note.desc}`).join('\n')
+          : 'You have no notes yet.';
+      }
+    }
+ // Function to toggle the questions slide panel
+function toggleQuestions() {
+  const slidePanel = document.getElementById("questions-slide");
+  if (slidePanel.style.display === "block") {
+    slidePanel.style.display = "none";
+  } else {
+    slidePanel.style.display = "block";
+    loadQuestions();
+  }
+}
+
+// Function to load questions dynamically into the slide panel
+function loadQuestions() {
+  const questionsListElement = document.getElementById("questions-list");
+  questionsListElement.innerHTML = ""; // Clear any existing questions
+
+  // Loop through the questions and add them to the list
+  questionsList.forEach(function(question) {
+    const listItem = document.createElement("li");
+    listItem.textContent = question;
+    questionsListElement.appendChild(listItem);
+  });
+}
